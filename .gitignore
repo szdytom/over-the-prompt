@@ -1,0 +1,9 @@
+# Built Files
+build/
+
+# Editor Config
+.vscode/
+
+# Backup Files
+*~
+*.swp
