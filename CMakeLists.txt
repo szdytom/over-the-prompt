@@ -22,7 +22,19 @@ PROJECT(over-the-promote
 	VERSION 0.1.0
 )
 
-ADD_EXECUTABLE(over-the-promote src/main.cc)
+ADD_EXECUTABLE(over-the-promote
+	src/main.cc
+	src/utilities/math/vector.cc
+	src/utilities/string/cases.cc
+	src/world/cmd/go/direction.cc
+	src/world/cmd/go/run.cc
+	src/world/mods/time/id.cc
+	src/world/mods/time/mod.cc
+	src/world/mods/time/state.cc
+	src/world/mods/time/time-point.cc
+	src/world/player.cc
+	src/world/state.cc
+)
 TARGET_INCLUDE_DIRECTORIES(over-the-promote PRIVATE include)
 TARGET_LINK_LIBRARIES(over-the-promote
 	PRIVATE ftxui::screen
