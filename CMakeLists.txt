@@ -18,7 +18,7 @@ FETCHCONTENT_DECLARE(fmt
 )
 FETCHCONTENT_MAKEAVAILABLE(fmt)
 
-PROJECT(over-the-promote
+PROJECT(over-the-prompt
 	VERSION 0.1.0
 )
 
