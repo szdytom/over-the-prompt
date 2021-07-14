@@ -21,6 +21,6 @@ int main() {
 	using namespace ftxui;
 	using namespace std;
 
-	ui::menu_screen.show();
+	ui::GameMenu::GetInstance().Show();
 	return 0; 
 }

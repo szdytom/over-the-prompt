@@ -12,9 +12,16 @@ namespace ui {
 class AboutMenu {
 private:
 	ScreenInteractive screen = ScreenInteractive::Fullscreen();
+	AboutMenu() { }
+	~AboutMenu() { }
 
 public:
-	void show() {
+	static AboutMenu& GetInstance(){
+		static AboutMenu instance;
+		return instance;
+	}
+
+	void Show() {
 		auto button_option = ButtonOption();
 		button_option.border = false;
 		auto buttons = Container::Horizontal({
@@ -34,35 +41,39 @@ public:
 		screen.Loop(main_renderer);
 	}
 };
-AboutMenu about_screen;
 
 class GameMenu {
 private:
 	ScreenInteractive screen = ScreenInteractive::Fullscreen();
+	GameMenu() { }
+	~GameMenu() { }
 
-	void jump(int selection) {
+	void Jump(int selection) {
 		switch (selection) {
-			case 3:
-			{
-				about_screen.show();
+			case 3: {
+				AboutMenu::GetInstance().Show();
 				break;
 			}
-			case 4:
-			{
+			case 4: {
 				break;
 			}
 		}
 	}
 
 public:
-	void show() {
+	static GameMenu& GetInstance(){
+		static GameMenu instance;
+		return instance;
+	}
+
+	void Show() {
 		auto button_option = ButtonOption();
 		button_option.border = false;
 		auto buttons = Container::Vertical({
 			Button("[ Resume   ]", screen.ExitLoopClosure(), button_option),
 			Button("[ New Game ]", screen.ExitLoopClosure(), button_option),
 			Button("[ Settings ]", screen.ExitLoopClosure(), button_option),
-			Button("[ About    ]", [&]() { jump(3); }, button_option),
+			Button("[ About    ]", [&]() { Jump(3); }, button_option),
 			Button("[ Quit     ]", screen.ExitLoopClosure(), button_option),
 		});
 
@@ -77,6 +88,5 @@ public:
 		screen.Loop(main_renderer);
 	}
 };
-GameMenu menu_screen;
 
 } // namespace ui
